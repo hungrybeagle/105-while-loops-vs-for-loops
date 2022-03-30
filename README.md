@@ -1,78 +1,53 @@
 ## SDSS Computing Studies Python Assignment
-### Assignment #004c While Loops (Total Marks 10)
+### Assignment #105 While vs For Loops (Total Marks 10)
 
 Objectives:
-* To repeat a loop until a boolean condition is met
-* Break out of while loops to prevent infinite loops
+* Identify when to use a while loop vs a for loop
 
-There are times when you might want to keep repeating a block of
-code endlessly until a specific condition is met.  For example,
-you might want to allow a user unlimited opportunities to try
-guessing their password and deny them access until they get it
-right, or until they reach a specific number of attempts.
-Another time you might want to repeat a block of code endlessly
-is if you're trying to repeat a number of steps, but don't know
-how many steps are going to be taken.  An example might be in a
-number guessing game.  You might want people to keep guessing
-until they have reached the correct number.
+For loops in Python are not like standard for loops in other programming languages.  In other programming languages, it is possible to reset a for loop from inside the for loop using a structure like the following:
 
-A while loop checks a condition, and if the condition is True,
-it executes the block of code, and will keep doing so until the
-condition is False
+```
+for i in range(0,10):
+    i = 4
+    pass
+```
 
-Sometimes, however, you might need to program in a "failsafe",
-a way to break out of the program if it looks like the condition
-might never be False.  Then the "break" command can be used.
+You might think that this would constantly change the temporary/increment variable to 4, but it would never actually reach 10. However, this is not the case.  The range(0,10) statement creates a tuple: (0,1,2,3,4,5,6,7,8,9) and the for loop iterates through each member of the tuple.  Changing i to 4 within the loop doesn't affect the tuple, and it just proceeds to the next member of the tuple.
 
-Look at the example programs to see how a While loop operates.
+* A for loop in Python will only repeat a set number of times based on the list or tuple you are interating through and cannot be changed.
 
-### 3 Tasks, 3 Problems, 12 marks
+A while loop can have a variable number of iterations, because that number is set by the conditional statement that is being set by the while loop.  Consider the following infinite loop:
 
-##### Task 1
-Count by 2's and display all the numbers, 1 on each line.
-Continue until the current value is 20
-(2 marks)
+```
+x = 0
+while x != 3:
+    x = 0
+    print(f"x is {x}")
+```
 
-##### Task 2
-Have the user enter a username and password.
-Repeat this until both the username and password match the 
-following:
-username: admin
-password: 12345
-(2 marks)
+This loop will never exit because x is always not equal to 3.  We can have it mimic the behavior of a for loop by incrementing a counter.
 
-##### Task 3
-Ask the user to enter in a number.
-Have them repeat this until the number is an even integer.
-(2 marks)
+```
+i = 0
+while i < 10:
+    print(f"i is {i}")
+    i = i + 1
+```
 
-##### Problem 1
-Have the user enter a username and password.
-Repeat this until both the username and password match the 
-following:
-username: admin
-password: 12345
-If they guess more than 3 times, they are not allowed to guess
-any more and the program will end.
-(2 marks)
+Challenging Assignment:
 
-##### Problem 2
-Have the user enter a number.
-Display the multiples of that number, up to 12 times that number:
-All numbers should be on the same line.
-(2 marks)
+Necklace Numbers
+Necklace numbers are a number sequence.  You start with 2 digits. The 3rd digit is created by adding the previous 2 digits, but if it's greater than 10, you add the sum of those 2 digits again.  You keep repeating this process until you get back to the 2 digits you started with
+Your program should do the following:
+ask the user to enter in 2 digits.
+Create the necklace number and display it:
 
-##### Problem 3
-The Fibonacci sequence was created to model how populations
-of bunnies increase over time.  It is also used in strategies
-that prolong how long you can play Blackjack before you 
-eventually lose all your money.
-It follows a pattern where the last two number are added 
-together to make the next number, starting with 1 1:
-Create a program to show the Fibonacci sequence, stopping
-after the number in the sequence is greater than 100:
+example inputs: 
+```
+9 4 -> 94483257314595516742685494
+1 3 -> 13472922461786527977538213
+```
 
-Example:
-1 1 2 3 5
-(2 points) 
+
+extra: What is the shortest necklace number sequence that can be made?
 
